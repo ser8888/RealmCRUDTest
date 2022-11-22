@@ -17,20 +17,20 @@ import RealmSwift
 //
 //}
 
-final class ItemGroup: Object, ObjectKeyIdentifiable {
+class ItemGroup: Object, ObjectKeyIdentifiable {
     @Persisted(primaryKey: true) var _id: ObjectId
 //    @Persisted var items = RealmSwift.List<Item>()
     @Persisted var name: String
     @Persisted var picture: Data?
     
-    convenience init ( name: String , picture: Data? = Data()) {
-
-    self.init()
-
-        self.name = name
-        self.picture = picture
-
-    }
+//    convenience init ( name: String , picture: Data? = Data()) {
+//
+//    self.init()
+//
+//        self.name = name
+//        self.picture = picture
+//
+//    }
     override class func primaryKey() -> String? {
         "id"
     }

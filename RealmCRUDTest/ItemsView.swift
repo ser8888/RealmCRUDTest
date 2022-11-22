@@ -7,6 +7,7 @@
 
 import SwiftUI
 import RealmSwift
+import PhotosUI
 
 struct ItemsView: View {
     
@@ -15,23 +16,82 @@ struct ItemsView: View {
     
     @State private var isPresented: Bool = false
     
+    @State private var selectedItem: PhotosPickerItem? = nil
+    @State private var selectedImageData: Data? = nil
+    
+    @Environment(\.dismiss) private var dismiss
+    
     var body: some View {
+        
         NavigationView {
             VStack {
+                Text("Старые данные")
                 Text(itemGroup.name)
-                List {
-                    ForEach(itemGroups, id: \.id) { item in
-                        Text(item.name)
-                        
+           
+                
+                if let selectedImageData = itemGroup.picture,
+                   let uiImage = UIImage(data: selectedImageData) {
+                    Image(uiImage: uiImage)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 250, height: 250)
+                }
+                Divider()
+                
+                Text("Новые данные")
+                TextField("Новая группа", text: $itemGroup.name)
+                
+                // выбор новой фотки
+                PhotosPicker(
+                    selection: $selectedItem,
+                    matching: .images,
+                    photoLibrary: .shared()
+                ) {
+                    Text("Select a photo")
+                }
+                .onChange(of: selectedItem) { newItem in
+                    Task {
+        //                                   Retrive selected asset in the form of Data
+                        if let data = try? await newItem?.loadTransferable(type: Data.self) {
+                            selectedImageData = data
+                        }
                     }
                 }
-                .navigationTitle("View")
+                if let selectedImageData,
+                   let uiImage = UIImage(data: selectedImageData) {
+
+                    Image(uiImage: uiImage)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 250, height: 250)
+                }
+                
+                Button ( action: {
+                    
+
+ //                   itemGroup.picture = selectedImageData
+                    
+                    $itemGroups.append(itemGroup)
+                  
+                    
+ 
+         
+                    dismiss()
+                })
+                {
+                    Text("Записать изменения")
+                }
+                .frame(width: 650, alignment: .center)
+                .buttonStyle(.bordered)
+                
+            }
+                .navigationTitle("Изменение записи")
             }
             .sheet(isPresented: $isPresented, content: {
-                CRUDVIew(itemGroup: itemGroup)
+  //              CRUDVIew(itemGroup: itemGroup)
             })
             .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
+                ToolbarItem {
                     Button {
                         // action
                         isPresented = true
@@ -44,11 +104,11 @@ struct ItemsView: View {
            
         }
     }
-}
+
 
 //struct ItemsView_Previews: PreviewProvider {
 //    static var previews: some View {
-//        @ObservedResults(ItemGroup.self) var itemGroups
-//        ItemsView(itemGroups: itemGroups)
+//
+//        ItemsView(itemGroup: ItemGroups )
 //    }
 //}
