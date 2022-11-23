@@ -21,12 +21,16 @@ struct ItemsView: View {
     
     @Environment(\.dismiss) private var dismiss
     
+    let realm = try! Realm()
+    
     var body: some View {
         
         NavigationView {
             VStack {
+ //               Text("ItemView")
                 Text("Старые данные")
                 Text(itemGroup.name)
+
            
                 
                 if let selectedImageData = itemGroup.picture,
@@ -54,6 +58,8 @@ struct ItemsView: View {
         //                                   Retrive selected asset in the form of Data
                         if let data = try? await newItem?.loadTransferable(type: Data.self) {
                             selectedImageData = data
+   //                         itemGroup.picture = data
+                            
                         }
                     }
                 }
@@ -69,10 +75,32 @@ struct ItemsView: View {
                 Button ( action: {
                     
 
+// fucking nice code
+                    let thaweditemGroup = itemGroup.thaw()
+                    try! realm.write {
+        //                thaweditemGroup?.name = "Uasya"
+                        thaweditemGroup?.picture = selectedImageData
+                    }
+                    
+                    
+                    
+//                    itemGroup.picture = selectedImageData
+                    
+ //                   let frozenDog = self.myDog.freeze()
+                    // ---> pass frozenDog to other viewController
+
+//                    let thawedDog = frozenDog.thaw()
+//                    try! realm.write {
+//                        thawedDog.age = 102
+                    
+  //                  var itemGroupthaw  = itemGroup.thaw()
  //                   itemGroup.picture = selectedImageData
                     
-                    $itemGroups.append(itemGroup)
-                  
+ //                   itemGroupthaw?.picture = selectedImageData
+//
+//                   $itemGroups.append(itemGroupthaw!)
+
+                    
                     
  
          
@@ -84,8 +112,9 @@ struct ItemsView: View {
                 .frame(width: 650, alignment: .center)
                 .buttonStyle(.bordered)
                 
+                Spacer()
             }
-                .navigationTitle("Изменение записи")
+ //               .navigationTitle("Изменение записи")
             }
             .sheet(isPresented: $isPresented, content: {
   //              CRUDVIew(itemGroup: itemGroup)
@@ -103,6 +132,15 @@ struct ItemsView: View {
         }
            
         }
+    
+//    func uodateRealm() {
+//
+//        let realm = Realm()
+//        try! realm.write {
+////                       itemGroups(itemGroupthaw)
+//        }
+//    }
+    
     }
 
 
