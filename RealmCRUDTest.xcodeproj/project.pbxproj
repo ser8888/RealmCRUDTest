@@ -8,8 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		7F6894AE292CB93000EAC663 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6894AD292CB93000EAC663 /* Model.swift */; };
-		7F6894B0292CC01F00EAC663 /* CRUDVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6894AF292CC01F00EAC663 /* CRUDVIew.swift */; };
-		7F6894B2292CC28F00EAC663 /* ItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6894B1292CC28F00EAC663 /* ItemsView.swift */; };
+		7F6894B0292CC01F00EAC663 /* CRUDGroupVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6894AF292CC01F00EAC663 /* CRUDGroupVIew.swift */; };
+		7F6894B2292CC28F00EAC663 /* ItemsGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6894B1292CC28F00EAC663 /* ItemsGroupView.swift */; };
+		7FC00331292E6A66009D253E /* ItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC00330292E6A66009D253E /* ItemView.swift */; };
+		7FC00333292E72DD009D253E /* AddItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC00332292E72DD009D253E /* AddItemsView.swift */; };
 		7FED5063292C97EB00EE9D40 /* RealmCRUDTestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FED5062292C97EB00EE9D40 /* RealmCRUDTestApp.swift */; };
 		7FED5065292C97EB00EE9D40 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FED5064292C97EB00EE9D40 /* ContentView.swift */; };
 		7FED5067292C97EB00EE9D40 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7FED5066292C97EB00EE9D40 /* Assets.xcassets */; };
@@ -21,8 +23,10 @@
 
 /* Begin PBXFileReference section */
 		7F6894AD292CB93000EAC663 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
-		7F6894AF292CC01F00EAC663 /* CRUDVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRUDVIew.swift; sourceTree = "<group>"; };
-		7F6894B1292CC28F00EAC663 /* ItemsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsView.swift; sourceTree = "<group>"; };
+		7F6894AF292CC01F00EAC663 /* CRUDGroupVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRUDGroupVIew.swift; sourceTree = "<group>"; };
+		7F6894B1292CC28F00EAC663 /* ItemsGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsGroupView.swift; sourceTree = "<group>"; };
+		7FC00330292E6A66009D253E /* ItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemView.swift; sourceTree = "<group>"; };
+		7FC00332292E72DD009D253E /* AddItemsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemsView.swift; sourceTree = "<group>"; };
 		7FED505F292C97EB00EE9D40 /* RealmCRUDTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RealmCRUDTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FED5062292C97EB00EE9D40 /* RealmCRUDTestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmCRUDTestApp.swift; sourceTree = "<group>"; };
 		7FED5064292C97EB00EE9D40 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -66,8 +70,10 @@
 				7FED5062292C97EB00EE9D40 /* RealmCRUDTestApp.swift */,
 				7F6894AD292CB93000EAC663 /* Model.swift */,
 				7FED5064292C97EB00EE9D40 /* ContentView.swift */,
-				7F6894B1292CC28F00EAC663 /* ItemsView.swift */,
-				7F6894AF292CC01F00EAC663 /* CRUDVIew.swift */,
+				7F6894B1292CC28F00EAC663 /* ItemsGroupView.swift */,
+				7FC00330292E6A66009D253E /* ItemView.swift */,
+				7F6894AF292CC01F00EAC663 /* CRUDGroupVIew.swift */,
+				7FC00332292E72DD009D253E /* AddItemsView.swift */,
 				7FED5075292CAA1D00EE9D40 /* SwiftUIView.swift */,
 				7FED5066292C97EB00EE9D40 /* Assets.xcassets */,
 				7FED5068292C97EB00EE9D40 /* Preview Content */,
@@ -160,10 +166,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7F6894B0292CC01F00EAC663 /* CRUDVIew.swift in Sources */,
-				7F6894B2292CC28F00EAC663 /* ItemsView.swift in Sources */,
+				7F6894B0292CC01F00EAC663 /* CRUDGroupVIew.swift in Sources */,
+				7F6894B2292CC28F00EAC663 /* ItemsGroupView.swift in Sources */,
 				7FED5065292C97EB00EE9D40 /* ContentView.swift in Sources */,
+				7FC00333292E72DD009D253E /* AddItemsView.swift in Sources */,
 				7FED5063292C97EB00EE9D40 /* RealmCRUDTestApp.swift in Sources */,
+				7FC00331292E6A66009D253E /* ItemView.swift in Sources */,
 				7FED5076292CAA1D00EE9D40 /* SwiftUIView.swift in Sources */,
 				7F6894AE292CB93000EAC663 /* Model.swift in Sources */,
 			);

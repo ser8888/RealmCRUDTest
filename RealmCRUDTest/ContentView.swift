@@ -11,19 +11,20 @@ import RealmSwift
 struct ContentView: View {
     
     @ObservedResults(ItemGroup.self) var itemGroups
+    
     @State private var isPresented: Bool = false
     
     var body: some View {
-        Text("content view ")
+ //       Text("Main View")
         NavigationView {
             VStack {
                 if itemGroups.isEmpty {
                     Text("Nothing inside")
-                } else { Text("записи есть")}
+                } else { Text("есть \(itemGroups.count) записи")}
                 List {
                     ForEach(itemGroups , id: \.id) { itemGroup in
                         NavigationLink {
-                            ItemsView(itemGroup: itemGroup)
+                            ItemsGroupView(itemGroup: itemGroup)
                             } label: {
                                 Text(itemGroup.name)
                                // Text("Идем дальше")

@@ -9,10 +9,10 @@ import SwiftUI
 import RealmSwift
 import PhotosUI
 
-struct ItemsView: View {
+struct ItemsGroupView: View {
     
     @ObservedRealmObject var itemGroup: ItemGroup
-    @ObservedResults(ItemGroup.self) var itemGroups
+ //   @ObservedResults(ItemGroup.self) var itemGroups
     
     @State private var isPresented: Bool = false
     
@@ -24,12 +24,17 @@ struct ItemsView: View {
     let realm = try! Realm()
     
     var body: some View {
+        Text("ItemView")
         
         NavigationView {
             VStack {
  //               Text("ItemView")
                 Text("Старые данные")
-                Text(itemGroup.name)
+                NavigationLink {
+                    ItemView(itemGroup: itemGroup)
+                } label: {
+                    Text(itemGroup.name)
+                }
 
            
                 
@@ -40,10 +45,13 @@ struct ItemsView: View {
                         .scaledToFit()
                         .frame(width: 250, height: 250)
                 }
-                Divider()
+      //          Divider()
                 
                 Text("Новые данные")
                 TextField("Новая группа", text: $itemGroup.name)
+                    .textFieldStyle(.roundedBorder)
+                    .padding()
+                    
                 
                 // выбор новой фотки
                 PhotosPicker(
